@@ -1,4 +1,4 @@
-# graduation-project
+# Graduation-project
 Please change the branch to master to view the project details. 
 
 Online Exam Proctoring and Management System
