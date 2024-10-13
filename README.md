@@ -1,3 +1,27 @@
+You can explore database structure of the project by visiting the link below
+
+https://lucid.app/lucidchart/d56dd659-7c27-4635-9c2e-b8b4a6e16c98/edit?viewport_loc=-1483%2C-895%2C4416%2C1972%2C0_0&invitationId=inv_a7672856-1b71-4c95-b692-8783a29e92bb
+
+
+You can view the raw user interface design of the system by visiting the link below
+
+https://www.figma.com/design/FvvPWaOEiQ5pi1esdVoo7n/Online_Exam_Proctoring_System?m=auto&t=dr8OK98tHH5e3cid-6
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
