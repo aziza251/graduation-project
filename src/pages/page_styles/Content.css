@@ -1,0 +1,71 @@
+/* Styling for the content-image container */
+.content-image-container {
+    display: flex;
+    flex-direction: row; /* Align items in a row */
+    justify-content: space-between; /* Space between contents and image */
+    align-items: center; /* Center vertically */
+    padding: 40px 20px;
+    margin: 40px 40px;
+    background-color: #f9f9f9; /* Background color */
+}
+
+/* Left and Right content sections */
+.left-content, .right-content {
+    flex: 1; /* Allow content sections to take available space */
+    text-align: left; /* Align text to the left */
+    padding: 20px; /* Padding around content */
+    
+}
+
+.left-content h1, .right-content h1 {
+    font-family: Arial, sans-serif;
+    color: #3ddbc1;
+    font-size: 28px; /* Adjust font size as needed */
+    margin-bottom: 15px; /* Space below the heading */
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.left-content p, .right-content p {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px; /* Adjust font size as needed */
+    color: #333; /* Text color */
+    line-height: 1.6; /* Line height for readability */
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+/* Image section */
+.image-section {
+    flex: 1; /* Allow image section to take available space */
+    display: flex; /* Use flexbox to center image */
+    justify-content: center; /* Center image horizontally */
+    align-items: center; /* Center image vertically */
+    padding: 20px; /* Padding around image */
+}
+
+.center-image {
+    width: 100%; /* Full width */
+    max-width: 400px; /* Limit maximum width of the image */
+    height: auto; /* Maintain aspect ratio */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* Shadow for the image */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .content-image-container {
+        flex-direction: column; /* Stack items vertically on small screens */
+        align-items: center; /* Center items */
+    }
+
+    .left-content, .right-content {
+        text-align: center; /* Center text on small screens */
+        padding: 10px; /* Adjust padding */
+    }
+
+    .center-image {
+        max-width: 90%; /* Make image responsive */
+    }
+}
