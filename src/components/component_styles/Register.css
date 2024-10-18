@@ -1,0 +1,133 @@
+/* Register.css */
+
+.register-container {
+    width: 80%;
+    max-width: 700px;
+    margin:0 auto;
+   margin-top: 40px;
+   margin-left: 350px;
+    padding: 30px;
+    background-color: #33ada6;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+    height: 80vh;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: black;
+    margin-bottom: 20px;
+}
+
+/* Adjust the form-row to reduce space between elements */
+.form-row {
+    display: flex;
+    justify-content: flex-start; /* Align to the left */
+    gap: 10px; /* Closer gap between dropdown and photo button */
+    width: 100%;
+    margin-bottom: 15px;
+    align-items: center; /* Align items vertically */
+}
+
+/* Adjust the column widths */
+.form-column, .photo-column {
+    flex: 1; /* Ensure both columns take equal available space */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the left */
+}
+
+label {
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: black;
+}
+
+input, select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    width: 100%; /* Make inputs full width */
+}
+
+select {
+    background-color: #fff;
+    -webkit-appearance: none; 
+    -moz-appearance: none;    
+    appearance: none;         
+}
+
+button {
+    padding: 12px 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button:hover {
+    background-color: #ccc;
+}
+
+button[type="submit"] {
+    width: 50%;
+    background-color: #fff;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
+
+button[type="submit"]:hover {
+    color: hsl(177, 50%, 34%); /* Text color on hover */
+}
+
+/* Input fields */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+select {
+    width: 90%;
+}
+
+/* Photo button */
+#photo {
+    width: 150px; /* Set width of button */
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#photo:hover {
+    color: hsl(177, 50%, 34%); /* Text color on hover */
+}

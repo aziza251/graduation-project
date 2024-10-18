@@ -1,6 +1,11 @@
 import React from "react";
 import "./component_styles/Header.css";
-
+import Login from "./Login";
+import Register from "./Register";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 const Header = () => {
   return (
     <nav className="header">
@@ -10,14 +15,63 @@ const Header = () => {
           src="https://upload.wikimedia.org/wikipedia/tr/b/ba/%C3%9Csk%C3%BCdar_%C3%9Cniversitesi_logo.png"
           alt="header_logo"
           style={{
-            width: "100px",
-            height: "100px",
+            width: "80px",
+            height: "80px",
             marginLeft: "20px",
             marginTop: "10px",
           }}
         />
       </a>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          marginRight: "500px",
+          padding: "10px",
+        }}
+      >
+        <a href="https://www.instagram.com/uskudaruni?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
+          <InstagramIcon
+            style={{
+              color: "white", // Change icon color
+              fontSize: "30px", // Adjust size as needed
+              marginLeft: "0", // Add some space between logo and icon
+              marginTop: "20px", // Align with the logo vertically
+            }}
+          />
+        </a>
+        <a href="https://www.facebook.com/uskudaruniversity">
+          <FacebookIcon
+            style={{
+              color: "white", // Change icon color
+              fontSize: "30px", // Adjust size as needed
+              // Add some space between logo and icon
+              marginTop: "20px", // Align with the logo vertically
+            }}
+          />
+        </a>
 
+        <a href="https://twitter.com/uskudaruni">
+          <TwitterIcon
+            style={{
+              color: "white", // Change icon color
+              fontSize: "30px", // Adjust size as needed
+              marginLeft: "0", // Add some space between logo and icon
+              marginTop: "20px", // Align with the logo vertically
+            }}
+          />
+        </a>
+        <a href="tel:+902164444444">
+          <LocalPhoneIcon
+            style={{
+              color: "white", // Change icon color
+              fontSize: "30px", // Adjust size as needed
+              marginLeft: "0", // Add some space between logo and icon
+              marginTop: "20px", // Align with the logo vertically
+            }}
+          />
+        </a>
+      </div>
       {/* Icons on the right */}
       <div className="header__icons">
         <a href="">Sign up</a>

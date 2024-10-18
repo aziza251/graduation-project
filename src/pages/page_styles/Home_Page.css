@@ -1,78 +1,129 @@
-/* Styling for the Home container */
+/* General Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+  min-height: 100%;
+}
+
+h1, h2, h3 {
+  color: #33ada6;
+  text-align: center;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+  text-align: justify;
+}
+
+/* Make sure the entire page is scrollable */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Home Page */
 .home-container {
-    display: flex;
-    flex-direction: row; /* Align items in a row */
-    justify-content: space-between; /* Space between content and image */
-    align-items: center; /* Center vertically */
-    padding: 40px 20px;
-    
-    background-color: #f9f9f9;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  background-color: #f1f1f1;
+  padding: 50px;
+}
+
+.home-content {
+  max-width: 45%;
+  margin-bottom: 30px;
+  text-align: left;
+ 
+}
+
+.home-banner {
+  max-width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.uni-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Content Page */
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  background-color: #f1f1f1;
+  padding: 80px;
+  margin: 40px 20px;
+}
+
+.left-content, .right-content {
+  flex: 1;
+  padding: 10px;
   
-  /* Banner section */
-  .home-banner {
-    flex: 1; /* Allow the image section to take available space */
-    max-width: 500px; /* Limit the maximum width of the image */
-    margin-left: 20px; /* Margin to separate from content */
+}
+
+.image-section {
+  flex: 1;
+  text-align: center;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+.center-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* About Page */
+.about-page {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px 20px;
+  padding: 40px;
+  background-color: #f1f1f1;
+  flex-wrap: wrap;
+}
+
+.about-content {
+  max-width: 45%;
+  text-align: left;
+}
+
+.about-banner {
+  max-width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.uni-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .home-container, .about-page {
+    flex-direction: column;
   }
-  
+
+  .home-content, .home-banner, .about-content, .about-banner {
+    max-width: 100%;
+  }
+
   .uni-image {
-    width: 100%;
-    height: 100%;
-    border-radius: 0%;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
   }
-  
-  /* Content section */
-  .home-content {
-    flex: 1; /* Allow content section to take available space */
-    text-align: left; /* Align text to the left */
-    margin-right: 20px; /* Margin to separate from the image */
-  }
-  
-  .home-content h1 {
-    font-family: Arial, sans-serif;
-    color: #3ddbc1;
-    font-size: 36px;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  
-  .home-content p {
-    
-    font-size: 18px;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    line-height: 1.6;
-    color: #333;
-    margin-bottom: 15px;
-  }
-  
-  /* Styling for mobile responsiveness */
-  @media (max-width: 768px) {
-    .home-container {
-      flex-direction: column; /* Stack items vertically on small screens */
-      align-items: center; /* Center items */
-    }
-  
-    .home-banner {
-      margin-left: 0; /* Remove left margin */
-      margin-top: 20px; /* Add margin at the top */
-    }
-  
-    .home-content {
-      margin-right: 0; /* Remove right margin */
-      text-align: center; /* Center text on small screens */
-    }
-  
-    .home-content h1 {
-      font-size: 28px;
-    }
-  
-    .home-content p {
-      font-size: 16px;
-    }
-  }
+}

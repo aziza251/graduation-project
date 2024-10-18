@@ -1,79 +1,70 @@
-/* Styling for login container */
+/* Login.css */
+
 .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f5f5f5;
-  }
-  
-  /* Form styling */
-  .login-form {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
-    width: 350px;
-    text-align: center;
-  }
-  
-  .login-form h2 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 26px;
-    color: #3ddbc1;
-    margin-bottom: 20px;
-  }
-  
-  .input-container {
-    margin-bottom: 15px;
-    text-align: left;
-  }
-  
-  .input-container label {
-    display: block;
-    margin-bottom: 5px;
-    color: #333;
-    font-weight: bold;
-  }
-  
-  .input-container input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-  }
-  
-  .login-button {
-    background-color: #3ddbc1;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    font-family: Arial, sans-serif;
-    cursor: pointer;
-    width: 100%;
-  }
-  
-  .login-button:hover {
-    background-color: #34bfa9;
-  }
-  
-  /* Footer links */
-  .login-footer {
-    margin-top: 15px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-  }
-  
-  .login-footer a {
-    color: #3ddbc1;
-    text-decoration: none;
-  }
-  
-  .login-footer a:hover {
-    text-decoration: underline;
-  }
-  
+  width: 100%;
+  max-width: 400px; /* Adjusted width for better visibility */
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #33ada6;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column; /* Single column layout */
+}
+
+h2 {
+  color: black;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.input-container {
+  margin-bottom: 15px;
+  width: 100%; /* Ensure input container is full width */
+}
+
+label {
+  display: block; /* Ensure label takes up the full width */
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: black;
+}
+
+
+input, select, button {
+  padding: 12px; /* Uniform padding for all inputs and buttons */
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  width: 100%; /* Make all inputs and buttons full width */
+  box-sizing: border-box; /* Ensures padding is included in width */
+}
+
+button {
+  background-color: #007bff; /* Change to your preferred button color */
+  color: white; /* Text color for button */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+.login-footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.login-footer a {
+  margin: 0 10px;
+  color: #007bff; /* Change to your preferred color */
+  text-decoration: none;
+}
+
+#photo {
+  width: 100%; /* Ensure photo button is full width */
+}

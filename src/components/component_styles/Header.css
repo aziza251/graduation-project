@@ -2,8 +2,8 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #3ddbc1;
-    padding: 10px 20px; /* Increased horizontal padding for better spacing */
+    background-color: #33ada6;
+    padding: 5px 10px; /* Increased horizontal padding for better spacing */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
 }
 
@@ -48,8 +48,8 @@ nav {
 
     .header__logo {
         margin: 0; /* Remove margins for better alignment */
-        width: 80px; /* Reduce logo size on smaller screens */
-        height: 80px;
+        width: 60px; /* Reduce logo size on smaller screens */
+        height: 60px;
     }
 
     .header__icons {

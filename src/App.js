@@ -1,26 +1,18 @@
 import React from "react";
-import Header from "./components/Header";
-import "./components/component_styles/Header.css";
-import Login from "./components/Login";
-import "./components/component_styles/Login.css";
 import Home_Page from "./pages/Home_Page";
-import "./pages/page_styles/Home_Page.css";
-import About_Page from "./pages/About_Page";
-import "./pages/page_styles/About.css";
-import Content_Page from "./pages/Content_Page";
-import "./pages/page_styles/Content.css";
+import Teacher_Home from "./pages/Teacher_Home";
+import Register from "./components/Register";
+import Manage_Student from "./components/Manage_Student";
+import Student_Exam_History from "./components/Student_Exam_History";
+import Teacher_Exam_History from "./components/Teacher_Exam_History";
+import Teacher_Exam_Results from "./components/Teacher_Exam_Results";
+import Teacher_Questions from "./components/Teacher_Questions";
+import Teacher_Start_Exam from "./components/Teacher_Start_Exam";
+import Create_Exam from "./components/Create_Exam";
+import axio from "axios";
 
 function App() {
-  return (
-    <div className="App">
-      <Header />
-      <Home_Page />
-      <Content_Page />
-      <About_Page />
-
-      <Login />
-    </div>
-  );
+  return <Home_Page />;
 }
 
 export default App;
