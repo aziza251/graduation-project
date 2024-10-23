@@ -1,5 +1,7 @@
 import React from "react";
 import "../components/component_styles/Teacher_Sidebar.css";
+
+import { Link } from "react-router-dom";
 import {
   FaPlusSquare,
   FaQuestionCircle,
@@ -14,34 +16,34 @@ const Teacher_Sidebar = () => {
     <div className="sidebar">
       <ul className="sidebar-menu">
         <li>
-          <a href="/create-exam">
+          <Link to="/create-exam">
             <FaPlusSquare className="icon" /> Create Exam
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/generate-question">
+          <Link to="/generate-question-manually">
             <FaQuestionCircle className="icon" /> Generate Question
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/exam-history">
+          <Link to="/teacher-exam-history">
             <FaHistory className="icon" /> Exam History
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/exam-results">
+          <Link to="/teacher-exam-results">
             <FaCheckSquare className="icon" /> Exam Results
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/view-questions">
+          <Link to="/teacher-questions">
             <FaEye className="icon" /> View Questions
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/manage-students">
-            <FaUsers className="icon" /> Manage Students
-          </a>
+          <Link to="/manage-student">
+            <FaUsers className="icon" /> Manage Student
+          </Link>
         </li>
       </ul>
     </div>

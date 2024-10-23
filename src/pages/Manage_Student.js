@@ -1,7 +1,7 @@
 import React, { useState } from "react"; // Import useState for state management
-import General_Header from "./General_Header";
-import Teacher_Sidebar from "./Teacher_Sidebar";
-import "./component_styles/Manage_Student.css";
+import General_Header from "../components/General_Header";
+import Teacher_Sidebar from "../components/Teacher_Sidebar";
+import "./page_styles/Manage_Student.css";
 import { hover } from "@testing-library/user-event/dist/hover";
 
 const Manage_Student = () => {

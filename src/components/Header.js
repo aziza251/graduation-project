@@ -6,10 +6,11 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import { FaSignInAlt, FaUserPlus } from "react-icons/fa";
 const Header = () => {
   return (
     <nav className="header">
-      <a>
+      <a href="/">
         <img
           className="header__logo"
           src="https://upload.wikimedia.org/wikipedia/tr/b/ba/%C3%9Csk%C3%BCdar_%C3%9Cniversitesi_logo.png"
@@ -74,8 +75,18 @@ const Header = () => {
       </div>
       {/* Icons on the right */}
       <div className="header__icons">
-        <a href="">Sign up</a>
-        <a href="">Sign in</a>
+        <a href="/register">
+          <FaUserPlus
+            className="icon"
+            style={{ height: "45px", width: "45px" }}
+          />
+        </a>
+        <a href="/login">
+          <FaSignInAlt
+            className="icon"
+            style={{ height: "45px", width: "45px" }}
+          />
+        </a>
       </div>
     </nav>
   );

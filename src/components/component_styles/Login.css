@@ -5,7 +5,7 @@
   max-width: 400px; /* Adjusted width for better visibility */
   margin: 0 auto;
   padding: 30px;
-  background-color: #33ada6;
+  background-color: #f4f4f4;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -23,7 +23,8 @@ h2 {
 
 .input-container {
   margin-bottom: 15px;
-  width: 100%; /* Ensure input container is full width */
+  margin-left: 35px; /* Add space between label and input */
+  width: 82%; /* Ensure input container is full width */
 }
 
 label {
@@ -34,7 +35,7 @@ label {
 }
 
 
-input, select, button {
+input, select {
   padding: 12px; /* Uniform padding for all inputs and buttons */
   border-radius: 5px;
   border: 1px solid #ddd;
@@ -43,15 +44,11 @@ input, select, button {
   box-sizing: border-box; /* Ensures padding is included in width */
 }
 
-button {
-  background-color: #007bff; /* Change to your preferred button color */
-  color: white; /* Text color for button */
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+
+
 
 button:hover {
-  background-color: #0056b3; /* Darker shade on hover */
+  background-color: #33ada6; /* Darker shade on hover */
 }
 
 .login-footer {
@@ -61,10 +58,15 @@ button:hover {
 
 .login-footer a {
   margin: 0 10px;
-  color: #007bff; /* Change to your preferred color */
+  color: #33ada6; /* Change to your preferred color */
   text-decoration: none;
 }
 
-#photo {
-  width: 100%; /* Ensure photo button is full width */
+.button-row {
+  display: flex;
+   /* Ensure the buttons are spaced properly */
+  gap: 50px; /* Add some space between the buttons */
+  margin-top: 20px;
+  margin-left: 40px;
 }
+

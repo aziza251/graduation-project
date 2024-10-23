@@ -1,7 +1,7 @@
 import React from "react";
-import General_Header from "./General_Header";
-import Teacher_Sidebar from "./Teacher_Sidebar";
-import "../components/component_styles/Manage_Student.css";
+import General_Header from "../components/General_Header";
+import Teacher_Sidebar from "../components/Teacher_Sidebar";
+import "./page_styles/Manage_Student.css";
 const Teacher_Exam_Results = () => {
   const students = [
     { id: 1, name: "Mid Term", email: "john@example.com", age: 20, grade: "A" },

@@ -1,13 +1,18 @@
 
 nav {
-   position: fixed;
+    position: fixed; /* Add this to fix the header */
+    top: 0; /* Position it at the top of the viewport */
+    left: 0;
+    right: 0;
+    height: 100px; /* Set a fixed height */
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #33ada6;
     padding: 5px 10px; /* Increased horizontal padding for better spacing */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
-   
+    
+    margin-bottom: 100px;
+    z-index: 1000; /* Ensure it stays above other content */
 }
 
 .header__logo {
@@ -19,8 +24,8 @@ nav {
 
 .header__icons {
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    align-items: flex-end;
+    justify-content: flex-end;
     gap: 5px; /* Space between the links */
 }
 

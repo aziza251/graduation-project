@@ -1,5 +1,9 @@
 import React from "react";
-import "./component_styles/Header.css";
+import "./component_styles/General_Header.css";
+import {
+  FaSignOutAlt, // For "View Exam History"
+  FaBell,
+} from "react-icons/fa";
 
 const General_Header = () => {
   return (
@@ -20,7 +24,15 @@ const General_Header = () => {
 
       {/* Icons on the right */}
       <div className="header__icons">
-        <a href="">Log out</a>
+        <a href="">
+          <FaBell className="icon" style={{ height: "40px", width: "40px" }} />
+        </a>
+        <a href="/">
+          <FaSignOutAlt
+            className="icon"
+            style={{ height: "45px", width: "45px" }}
+          />
+        </a>
       </div>
     </nav>
   );

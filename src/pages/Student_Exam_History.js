@@ -1,7 +1,7 @@
 import React from "react";
-import General_Header from "./General_Header";
-import Student_Sidebar from "./Student_Sidebar";
-import "./component_styles/Manage_Student.css";
+import General_Header from "../components/General_Header";
+import Student_Sidebar from "../components/Student_Sidebar";
+import "./page_styles/Manage_Student.css";
 
 const Student_Exam_History = () => {
   const students = [
