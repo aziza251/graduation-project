@@ -15,12 +15,6 @@ const Header = () => {
           className="header__logo"
           src="https://upload.wikimedia.org/wikipedia/tr/b/ba/%C3%9Csk%C3%BCdar_%C3%9Cniversitesi_logo.png"
           alt="header_logo"
-          style={{
-            width: "80px",
-            height: "80px",
-            marginLeft: "20px",
-            marginTop: "10px",
-          }}
         />
       </a>
       <div

@@ -1,20 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import General_Header from "../components/General_Header";
 import Teacher_Sidebar from "../components/Teacher_Sidebar";
-
+import axios from "axios";
 import "./page_styles/Manage_Student.css";
 
 const Teacher_Exam_History = () => {
-  const students = [
-    { id: 1, name: "Mid Term", email: "john@example.com", age: 20, grade: "A" },
-    {
-      id: 2,
-      name: "Jane Smith",
-      email: "jane@example.com",
-      age: 22,
-      grade: "B",
-    },
-  ];
+  const [examHistory, setExamHistory] = useState([]);
+
+  useEffect(() => {
+    const fetchExamHistory = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8000/teacher-exam-history"
+        );
+        console.log("Fetched data:", response.data); // Log fetched data
+        setExamHistory(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchExamHistory();
+  }, []);
+
+  // Function to format date
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString(); // Adjust the locale if needed
+  };
 
   return (
     <>
@@ -25,37 +37,36 @@ const Teacher_Exam_History = () => {
         <table className="student-table">
           <thead>
             <tr>
-              <th>Subject title</th>
-              <th>Exam title</th>
-              <th>Date </th>
-              <th>Start Time </th>
-              <th>End Time </th>
-              <th>Question Number </th>
-              <th>Average </th>
-              <th>Csv </th>
-              <th>Attendee </th>
-              <th>Suspicious Action</th>
+              <th>Subject Title</th>
+              <th>Exam Title</th>
+              <th>Date</th>
+              <th>Start Time</th>
+              <th>End Time</th>
+              <th>Question Number</th>
+              <th>Average</th>
+              <th>Attendees</th>
+              <th>CSV</th>
+              <th>Suspicious Actions</th>
             </tr>
           </thead>
           <tbody>
-            {students.map((student) => (
-              <tr key={student.id}>
-                <td>{student.id}</td>
-                <td>{student.name}</td>
-                <td>{student.name}</td>
-                <td>{student.email}</td>
-                <td>{student.age}</td>
-                <td>{student.id}</td>
-                <td>{student.name}</td>
-                <td>{student.name}</td>
-                <td>{student.email}</td>
-                <td>{student.age}</td>
+            {examHistory.map((exam) => (
+              <tr key={exam.exam_history_id}>
+                <td>{exam.subject_name}</td>
+                <td>{exam.exam_title}</td>
+                <td>{formatDate(exam.exam_date)}</td> {/* Format the date */}
+                <td>{exam.start_time}</td>
+                <td>{exam.end_time}</td>
+                <td>{exam.participants}</td>
+                <td>{exam.average_mark}</td>
+                <td>{exam.participants}</td>
+                <td>{exam.csv_upload_path}</td>
+                <td>{exam.suspicious_action}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      th
     </>
   );
 };

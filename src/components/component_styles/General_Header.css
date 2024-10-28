@@ -4,7 +4,7 @@ nav {
     top: 0; /* Position it at the top of the viewport */
     left: 0;
     right: 0;
-    height: 100px; /* Set a fixed height */
+    height: 70px; /* Set a fixed height */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -16,10 +16,10 @@ nav {
 }
 
 .header__logo {
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
     margin-left: 20px;
-    margin-top: 10px;
+    margin-top: 7px;
 }
 
 .header__icons {
@@ -56,8 +56,8 @@ nav {
 
     .header__logo {
         margin: 0; /* Remove margins for better alignment */
-        width: 60px; /* Reduce logo size on smaller screens */
-        height: 60px;
+        width: 4x0px; /* Reduce logo size on smaller screens */
+        height: 40px;
     }
 
     .header__icons {

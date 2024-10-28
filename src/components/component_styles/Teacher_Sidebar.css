@@ -1,10 +1,10 @@
 .sidebar {
   position: fixed;
-  top: 100px; /* Make sure it starts from the top */
+  top: 80px; /* Make sure it starts from the top */
   left: 0; /* Ensure it is positioned at the left */
   width: 225px;
   height: 100vh;
-  background-color: #33ada6;
+  background-color: #eaeaea;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -44,7 +44,7 @@
   align-items: center;
   padding: 15px;
   text-decoration: none;
-  color: #fff;
+  color: #33ada6;
   width: 100%;
   transition: background-color 0.3s ease;
   font-weight: bold;

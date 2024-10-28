@@ -1,40 +1,46 @@
-import React, { useState } from "react"; // Import useState for state management
+import React, { useEffect, useState } from "react";
 import General_Header from "../components/General_Header";
 import Teacher_Sidebar from "../components/Teacher_Sidebar";
 import "./page_styles/Manage_Student.css";
-import { hover } from "@testing-library/user-event/dist/hover";
+import axios from "axios";
+
+// Function to format date to MM/DD/YYYY
+const formatDate = (dateString) => {
+  const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+  const date = new Date(dateString);
+  return date.toLocaleDateString(undefined, options);
+};
 
 const Manage_Student = () => {
-  // Use useState to manage the students array
-  const [students, setStudents] = useState([
-    { id: 1, name: "John Doe", email: "john@example.com", age: 20, grade: "A" },
-    {
-      id: 2,
-      name: "Jane Smith",
-      email: "jane@example.com",
-      age: 22,
-      grade: "B",
-    },
-    {
-      id: 3,
-      name: "Alice Johnson",
-      email: "alice@example.com",
-      age: 19,
-      grade: "A",
-    },
-    { id: 4, name: "Bob Brown", email: "bob@example.com", age: 21, grade: "C" },
-    // Add more students as needed...
-  ]);
+  const [manageStudent, setManageStudent] = useState([]);
+
+  useEffect(() => {
+    const fetchManageStudent = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8000/manage-student"
+        );
+        setManageStudent(response.data);
+      } catch (error) {
+        console.log("Error fetching data", error);
+      }
+    };
+    fetchManageStudent();
+  }, []);
 
   // Function to handle deleting a student
-  const deleteStudent = (id) => {
-    // Ask for confirmation before deletion
+  const deleteStudent = async (id) => {
     const confirmDelete = window.confirm("Do you want to delete this student?");
     if (confirmDelete) {
-      // Filter out the student with the given id if confirmed
-      const updatedStudents = students.filter((student) => student.id !== id);
-      // Update the state with the new student list
-      setStudents(updatedStudents);
+      try {
+        await axios.delete(`http://localhost:8000/manage-student/${id}`);
+        const updatedStudents = manageStudent.filter(
+          (student) => student.id !== id
+        );
+        setManageStudent(updatedStudents);
+      } catch (error) {
+        console.error("Error deleting student:", error);
+      }
     }
   };
 
@@ -54,20 +60,20 @@ const Manage_Student = () => {
               <th>Date of Birth</th>
               <th>Email</th>
               <th>Photo</th>
-              <th>Actions</th> {/* Add Actions column for buttons */}
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {students.map((student) => (
+            {manageStudent.map((student) => (
               <tr key={student.id}>
-                <td>{student.id}</td>
-                <td>{student.name}</td>
-                <td>{student.name}</td>
+                <td>{student.identity_number}</td>
+                <td>{student.first_name}</td>
+                <td>{student.last_name}</td>
+                <td>{formatDate(student.date_of_birth)}</td>{" "}
+                {/* Format the date of birth */}
                 <td>{student.email}</td>
-                <td>{student.age}</td>
-                <td>{student.grade}</td>
+                <td>{student.photo}</td>
                 <td>
-                  {/* Delete button for each student */}
                   <button
                     className="delete-button"
                     onClick={() => deleteStudent(student.id)}

@@ -1,5 +1,8 @@
 /* Manage_Student.css */
+h2 {
+    margin-bottom: 20px;
 
+}
 body {
     margin: 0; /* Remove default body margin */
     overflow: hidden; /* Prevent scrolling on body */
@@ -8,6 +11,7 @@ body {
 .main-container {
     display: flex; /* Use flexbox for layout */
     margin-top: 60px; /* Spacing for the fixed header */
+   
 }
 
 .teacher-sidebar {
@@ -31,22 +35,29 @@ body {
     overflow-y: auto; /* Enable vertical scrolling for content */
     position: relative; /* Position relative to allow content to scroll */
     top: 0; /* Reset top positioning */
+    margin-bottom: 20px;
 }
 
 .student-table {
     width: 100%; /* Table takes full width */
     border-collapse: collapse; /* Remove gaps between table cells */
+    
 }
 
 .student-table th,
+  
+
 .student-table td {
-    padding: 10px; /* Padding for table cells */
-    text-align: left; /* Align text to the left */
+    padding: 13px; /* Padding for table cells */
+    text-align: center; /* Align text to the left */
     border-bottom: 1px solid #ddd; /* Light border for rows */
+  
+   
 }
 
 .student-table th {
     background-color: #f5f5f5; /* Light background for header */
+    
 }
 
 .fixed-header {

@@ -1,83 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import General_Header from "../components/General_Header";
 import Student_Sidebar from "../components/Student_Sidebar";
 import "./page_styles/Manage_Student.css";
+import axios from "axios";
 
 const Student_Exam_History = () => {
-  const students = [
-    { id: 1, name: "John Doe", email: "john@example.com", age: 20, grade: "A" },
-    {
-      id: 2,
-      name: "Jane Smith",
-      email: "jane@example.com",
-      age: 22,
-      grade: "B",
-    },
-    {
-      id: 3,
-      name: "Alice Johnson",
-      email: "alice@example.com",
-      age: 19,
-      grade: "A",
-    },
-    { id: 4, name: "Bob Brown", email: "bob@example.com", age: 21, grade: "C" },
-    {
-      id: 3,
-      name: "Alice Johnson",
-      email: "alice@example.com",
-      age: 19,
-      grade: "A",
-    },
-    { id: 4, name: "Bob Brown", email: "bob@example.com", age: 21, grade: "C" },
-    {
-      id: 3,
-      name: "Alice Johnson",
-      email: "alice@example.com",
-      age: 19,
-      grade: "A",
-    },
-    { id: 4, name: "Bob Brown", email: "bob@example.com", age: 21, grade: "C" },
-    {
-      id: 3,
-      name: "Alice Johnson",
-      email: "alice@example.com",
-      age: 19,
-      grade: "A",
-    },
-    { id: 4, name: "Bob Brown", email: "bob@example.com", age: 21, grade: "C" },
-    {
-      id: 3,
-      name: "Alice Johnson",
-      email: "alice@example.com",
-      age: 19,
-      grade: "A",
-    },
-    { id: 4, name: "Bob Brown", email: "bob@example.com", age: 21, grade: "C" },
-    {
-      id: 3,
-      name: "Alice Johnson",
-      email: "alice@example.com",
-      age: 19,
-      grade: "A",
-    },
-    { id: 4, name: "Bob Brown", email: "bob@example.com", age: 21, grade: "C" },
-    {
-      id: 3,
-      name: "Alice Johnson",
-      email: "alice@example.com",
-      age: 19,
-      grade: "A",
-    },
-    { id: 4, name: "Bob Brown", email: "bob@example.com", age: 21, grade: "C" },
-    {
-      id: 3,
-      name: "Alice Johnson",
-      email: "alice@example.com",
-      age: 19,
-      grade: "A",
-    },
-  ];
+  const [StudentExamHistory, setStudentExamHistory] = useState([]);
 
+  useEffect(() => {
+    const fetchExamHistory = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8000/student-exam-history"
+        );
+        console.log("Fetched data:", response.data); // Log fetched data
+        setStudentExamHistory(response.data);
+      } catch (error) {
+        console.error("Error fetching data", error);
+      }
+    };
+    fetchExamHistory();
+  }, []);
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString(); // Adjust the locale if needed
+  };
   return (
     <>
       <General_Header />
@@ -88,20 +36,22 @@ const Student_Exam_History = () => {
           <thead>
             <tr>
               <th>Subject title</th>
+              <th>Exam title</th>
               <th>Date </th>
-              <th>Score </th>
-              <th>Final Grade </th>
-              <th>Suspicious Action</th>
+              <th>Average </th>
+              <th> Participants </th>
+              <th>Number of Questions</th>
             </tr>
           </thead>
           <tbody>
-            {students.map((student) => (
-              <tr key={student.id}>
-                <td>{student.id}</td>
-                <td>{student.name}</td>
-                <td>{student.name}</td>
-                <td>{student.email}</td>
-                <td>{student.age}</td>
+            {StudentExamHistory.map((exam) => (
+              <tr key={exam.exam_history_id}>
+                <td>{exam.subject_name}</td>
+                <td>{exam.exam_title}</td>
+                <td>{formatDate(exam.exam_date)}</td> {/* Format the date */}
+                <td>{exam.average_mark}</td>
+                <td>{exam.participants}</td>
+                <td>{exam.question_num}</td>
               </tr>
             ))}
           </tbody>

@@ -3,7 +3,6 @@ import {
   FaBook, // For "View Exam History"
   FaChalkboardTeacher, // For "My Professors"
   FaClipboardList, // For "My Marks"
-  FaGraduationCap, // For "Exam Results"
 } from "react-icons/fa";
 import "../components/component_styles/Teacher_Sidebar.css";
 
@@ -17,18 +16,13 @@ const Student_Sidebar = () => {
           </a>
         </li>
         <li>
-          <a href="/view-professors">
+          <a href="/my-professors">
             <FaChalkboardTeacher className="icon" /> My Professors
           </a>
         </li>
         <li>
-          <a href="/exam-history">
+          <a href="/my-marks">
             <FaClipboardList className="icon" /> My Marks
-          </a>
-        </li>
-        <li>
-          <a href="/student-exam-results">
-            <FaGraduationCap className="icon" /> Exam Results
           </a>
         </li>
       </ul>
