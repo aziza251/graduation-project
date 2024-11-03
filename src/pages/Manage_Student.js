@@ -29,13 +29,15 @@ const Manage_Student = () => {
   }, []);
 
   // Function to handle deleting a student
-  const deleteStudent = async (id) => {
+  const deleteStudent = async (student_id) => {
     const confirmDelete = window.confirm("Do you want to delete this student?");
     if (confirmDelete) {
       try {
-        await axios.delete(`http://localhost:8000/manage-student/${id}`);
+        await axios.delete(
+          `http://localhost:8000/manage-student/${student_id}`
+        );
         const updatedStudents = manageStudent.filter(
-          (student) => student.id !== id
+          (student) => student.student_id !== student_id
         );
         setManageStudent(updatedStudents);
       } catch (error) {
@@ -65,18 +67,19 @@ const Manage_Student = () => {
           </thead>
           <tbody>
             {manageStudent.map((student) => (
-              <tr key={student.id}>
+              <tr key={student.student_id}>
+                {" "}
+                {/* use student.student_id */}
                 <td>{student.identity_number}</td>
                 <td>{student.first_name}</td>
                 <td>{student.last_name}</td>
-                <td>{formatDate(student.date_of_birth)}</td>{" "}
-                {/* Format the date of birth */}
+                <td>{formatDate(student.date_of_birth)}</td>
                 <td>{student.email}</td>
                 <td>{student.photo}</td>
                 <td>
                   <button
                     className="delete-button"
-                    onClick={() => deleteStudent(student.id)}
+                    onClick={() => deleteStudent(student.student_id)} // use student.student_id
                   >
                     Delete
                   </button>
