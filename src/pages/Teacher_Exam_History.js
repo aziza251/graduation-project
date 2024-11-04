@@ -27,7 +27,13 @@ const Teacher_Exam_History = () => {
     const date = new Date(dateString);
     return date.toLocaleDateString(); // Adjust the locale if needed
   };
-
+  // Function to format time to HH:mm
+  const formatTime = (timeString) => {
+    const date = new Date(`1970-01-01T${timeString}Z`); // Assuming time is in HH:mm format
+    const hours = String(date.getHours()).padStart(2, "0"); // Get hours with leading zero
+    const minutes = String(date.getMinutes()).padStart(2, "0"); // Get minutes with leading zero
+    return `${hours}:${minutes}`; // Format as HH:mm
+  };
   return (
     <>
       <General_Header />
@@ -55,8 +61,8 @@ const Teacher_Exam_History = () => {
                 <td>{exam.subject_name}</td>
                 <td>{exam.exam_title}</td>
                 <td>{formatDate(exam.exam_date)}</td> {/* Format the date */}
-                <td>{exam.start_time}</td>
-                <td>{exam.end_time}</td>
+                <td>{formatTime(exam.start_time)}</td>
+                <td>{formatTime(exam.end_time)}</td>
                 <td>{exam.participants}</td>
                 <td>{exam.average_mark}</td>
                 <td>{exam.participants}</td>

@@ -1,17 +1,115 @@
-import React from "react";
+import React, { useState } from "react";
 import "./page_styles/Generate_Q_Manually.css";
 import Contained_Button from "../components/Contained_Button";
 import General_Header from "../components/General_Header";
 import Teacher_Sidebar from "../components/Teacher_Sidebar";
+import Save_Question_Popup from "../components/Save_Question_Popup";
+import axios from "axios";
+import { jsPDF } from "jspdf";
 
 function Generate_Q_Manually() {
-  const handleSave = (e) => {
-    e.preventDefault();
-    alert("Question Saved");
+  const [questions, setQuestions] = useState([]);
+  const [formData, setFormData] = useState({
+    subjectTitle: "",
+    question: "",
+    optionA: "",
+    optionB: "",
+    optionC: "",
+    optionD: "",
+    answer: "",
+    points: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleAdd = (e) => {
-    console.log("Add More");
+    e.preventDefault();
+    setQuestions((prevQuestions) => [...prevQuestions, formData]); // Ensure questions array updates with the latest entry
+    setFormData({
+      subjectTitle: "",
+      question: "",
+      optionA: "",
+      optionB: "",
+      optionC: "",
+      optionD: "",
+      answer: "",
+      points: "",
+    });
+    console.log("Question added:", formData);
+  };
+
+  const handleSave = async (e) => {
+    e.preventDefault();
+    const fileType = prompt(
+      "Do you want to save as PDF or CSV?",
+      "PDF or CSV"
+    ).toLowerCase();
+
+    // Prompt for the file name
+    const fileName = prompt(
+      "Please enter the file name (without extension):",
+      "questions"
+    );
+
+    if (!fileName) {
+      alert("File name cannot be empty. Please provide a valid name.");
+      return;
+    }
+
+    if (fileType === "pdf") {
+      const doc = new jsPDF();
+      questions.forEach((q, index) => {
+        const positionY = 10 + index * 40; // Adjusted spacing for each question
+        doc.text(`Question ${index + 1}: ${q.question}`, 10, positionY);
+        doc.text(
+          `Options: A) ${q.optionA} B) ${q.optionB} C) ${q.optionC} D) ${q.optionD}`,
+          10,
+          positionY + 10
+        );
+        doc.text(`Answer: ${q.answer}`, 10, positionY + 20);
+        doc.text(`Points: ${q.points}`, 10, positionY + 30);
+      });
+      doc.save(`${fileName}.pdf`); // Save with the user-provided file name
+    } else if (fileType === "csv") {
+      const csvContent =
+        "data:text/csv;charset=utf-8," +
+        questions
+          .map(
+            (q) =>
+              `${q.subjectTitle},${q.question},${q.optionA},${q.optionB},${q.optionC},${q.optionD},${q.answer},${q.points}`
+          )
+          .join("\n");
+
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", `${fileName}.csv`); // Save with the user-provided file name
+      document.body.appendChild(link);
+      link.click();
+
+      // Prepare the file path for the CSV
+      const filePath = `http://localhost:8000/uploads/question.csv`; // Update this with the correct file path
+
+      // Log the file path to ensure it's correct
+      console.log("File path to send to backend:", filePath);
+      console.log("File name to send to backend:", fileName);
+      // Send the file path to the backend
+      try {
+        const response = await axios.post(
+          "http://localhost:8000/generate-question",
+
+          { csv_file_url: filePath, file_name: fileName }
+        );
+        console.log("Response from backend:", response.data);
+      } catch (error) {
+        console.error("Error sending CSV file URL to backend:", error);
+      }
+    } else {
+      alert("Please choose either PDF or CSV format.");
+    }
   };
 
   return (
@@ -23,11 +121,25 @@ function Generate_Q_Manually() {
         <form>
           <div className="form-row">
             <label htmlFor="subjectTitle">Subject Title</label>
-            <input type="text" id="subjectTitle" name="subjectTitle" required />
+            <input
+              type="text"
+              id="subjectTitle"
+              name="subjectTitle"
+              value={formData.subjectTitle}
+              onChange={handleInputChange}
+              required
+            />
           </div>
           <div className="form-row">
             <label htmlFor="question">Question</label>
-            <input type="text" id="question" name="question" required />
+            <input
+              type="text"
+              id="question"
+              name="question"
+              value={formData.question}
+              onChange={handleInputChange}
+              required
+            />
           </div>
           <div className="options-row">
             <div className="form-column">
@@ -36,6 +148,8 @@ function Generate_Q_Manually() {
                 type="text"
                 id="optionA"
                 name="optionA"
+                value={formData.optionA}
+                onChange={handleInputChange}
                 required
                 style={{ width: "100%" }}
               />
@@ -46,6 +160,8 @@ function Generate_Q_Manually() {
                 type="text"
                 id="optionB"
                 name="optionB"
+                value={formData.optionB}
+                onChange={handleInputChange}
                 required
                 style={{ width: "100%" }}
               />
@@ -58,6 +174,8 @@ function Generate_Q_Manually() {
                 type="text"
                 id="optionC"
                 name="optionC"
+                value={formData.optionC}
+                onChange={handleInputChange}
                 required
                 style={{ width: "100%" }}
               />
@@ -68,16 +186,22 @@ function Generate_Q_Manually() {
                 type="text"
                 id="optionD"
                 name="optionD"
+                value={formData.optionD}
+                onChange={handleInputChange}
                 required
                 style={{ width: "100%" }}
               />
             </div>
           </div>
-
-          {/* Dropdown for Answer */}
           <div className="form-row">
             <label htmlFor="answer">Answer</label>
-            <select id="answer" name="answer" required>
+            <select
+              id="answer"
+              name="answer"
+              value={formData.answer}
+              onChange={handleInputChange}
+              required
+            >
               <option value="">Select the correct answer</option>
               <option value="A">Option A</option>
               <option value="B">Option B</option>
@@ -85,12 +209,17 @@ function Generate_Q_Manually() {
               <option value="D">Option D</option>
             </select>
           </div>
-
           <div className="form-row">
             <label htmlFor="points">Points</label>
-            <input type="number" id="points" name="points" required />
+            <input
+              type="number"
+              id="points"
+              name="points"
+              value={formData.points}
+              onChange={handleInputChange}
+              required
+            />
           </div>
-
           <div className="buttons-row">
             <div className="button-column">
               <Contained_Button label="Save" onClick={handleSave} />

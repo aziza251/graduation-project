@@ -3,6 +3,10 @@ const mysql = require("mysql");
 const app = express();
 const cors = require("cors");
 const cron = require("node-cron");
+const PDFDocument = require("pdfkit");
+const { v4: uuidv4 } = require("uuid");
+const fs = require("fs");
+const path = require("path");
 
 app.use(express.json());
 app.use(cors());
@@ -143,6 +147,93 @@ app.delete("/manage-student/:id", (req, res) => {
   });
 });
 
+app.get("/view-questions", (req, res) => {
+  connection.query(
+    "SELECT file_name, csv_file_url  FROM csv_files",
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
+app.post("/generate-question", (req, res) => {
+  console.log("Received data:", req.body); // Log the incoming request
+
+  const uniqueId = uuidv4(); // Generate a unique identifier
+  fs.writeFile(filePath, "Sample,Content\n", (err) => {
+    if (err) {
+      console.error("Error writing file:", err);
+    } else {
+      console.log("File created successfully:", filePath);
+    }
+  });
+  // Check for CSV file URL
+  if (req.body.csv_file_url) {
+    // Create a unique path for the CSV file
+    // Ensure you send the filename from the frontend
+    const fileName = req.body.file_name; // Expecting file_name from the request
+
+    const csvFileUrl = `http://localhost:${8000}/uploads/${uniqueId}-file.csv`;
+    connection.query(
+      "INSERT INTO csv_files (csv_file_url, file_name) VALUES (?,?)",
+      [csvFileUrl, fileName],
+      (err, result) => {
+        if (err) {
+          console.log("Error inserting CSV file URL:", err);
+          return res.status(500).send("Error inserting CSV file URL");
+        } else {
+          console.log("CSV file inserted successfully:", result);
+        }
+      }
+    );
+  }
+
+  // Check for PDF file URL
+  if (req.body.pdf_file_url) {
+    // Create a unique path for the PDF file
+    const pdfFilePath = path.join(__dirname, "uploads", `${uniqueId}-file.pdf`);
+    connection.query(
+      "INSERT INTO pdf_files (pdf_file_url) VALUES (?)",
+      [pdfFilePath],
+      (err, result) => {
+        if (err) {
+          console.log("Error inserting PDF file URL:", err);
+          return res.status(500).send("Error inserting PDF file URL");
+        } else {
+          console.log("PDF file inserted successfully:", result);
+        }
+      }
+    );
+  }
+
+  res.send("Files processed successfully");
+});
+
+app.get("/files/:filename", (req, res) => {
+  const filename = req.params.filename;
+  const filePath = path.join(
+    __dirname,
+    "path_to_your_csv_files_directory",
+    filename
+  ); // Adjust the path as necessary
+  res.download(filePath, filename, (err) => {
+    if (err) {
+      console.error("Error sending file:", err);
+      res.status(500).send("Error sending file");
+    }
+  });
+  fs.writeFile(filePath, "Sample,Content\n", (err) => {
+    if (err) {
+      console.error("Error writing file:", err);
+    } else {
+      console.log("File created successfully:", filePath);
+    }
+  });
+});
 // Schedule the job to run daily at midnight, automatically updating exam statuses
 cron.schedule("*/1 * * * *", () => {
   const updateStatusQuery = `
