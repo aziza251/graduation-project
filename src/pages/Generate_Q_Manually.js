@@ -3,7 +3,7 @@ import "./page_styles/Generate_Q_Manually.css";
 import Contained_Button from "../components/Contained_Button";
 import General_Header from "../components/General_Header";
 import Teacher_Sidebar from "../components/Teacher_Sidebar";
-import Save_Question_Popup from "../components/Save_Question_Popup";
+//import Save_Question_Popup from "../components/Save_Question_Popup";
 import axios from "axios";
 import { jsPDF } from "jspdf";
 
