@@ -1,0 +1,61 @@
+.sidebar {
+  position: fixed;
+  top: 80px; /* Make sure it starts from the top */
+  left: 0; /* Ensure it is positioned at the left */
+  width: 225px;
+  height: 100vh;
+  background-color: #eaeaea;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  margin: 0; /* Remove any margin */
+  z-index: 999; /* Optional: ensure it stays above other content */
+}
+
+.sidebar-logo {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.user-avatar {
+  width: 80px;
+  height: 80px;
+  background-color: #fff;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.sidebar-menu {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+
+.sidebar-menu li {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.sidebar-menu li a {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  text-decoration: none;
+  color: #33ada6;
+  width: 100%;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+.sidebar-menu li a:hover {
+  color: hsl(177, 50%, 34%); /* Text color on hover */
+  font-weight: bold;
+}
+
+.sidebar-menu li a .icon {
+  margin-right: 10px;
+  font-size: 18px;
+}

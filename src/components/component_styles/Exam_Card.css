@@ -1,0 +1,89 @@
+.exam-card-container {
+  display: grid; /* Using CSS Grid for layout */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 2fr)); /* Responsive column sizing */
+  gap: 20px; /* Space between cards */
+  background-color: #f5f5f5; /* Background color for the container */
+  padding: 10px; /* Padding around the container */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+  margin-bottom: 20px; /* Space below the container */
+  margin-right: 13px; /* Space to the right of the container */
+  border-color: #33ada6; /* Border color (if needed for border style) */
+}
+.exam-list{
+  display: grid; /* Using CSS Grid for layout */
+  grid-template-columns: repeat(3, minmax(300px, 2fr)); /* Responsive column sizing */
+  gap: 30px; /* Space between cards */
+  
+  
+}
+.subject-title {
+
+  font-size: 18px; /* Font size for the subject title */
+  font-weight: bold; /* Bold weight for emphasis */
+ margin-top: -10px;
+ margin-bottom: 0px;
+
+}
+
+.exam-title {
+  font-size: 16px; /* Font size for the exam title */
+  font-weight: bold; /* Bold weight for emphasis */
+  margin: 1px 0;
+  padding: 1px 0;
+  margin-bottom: -10px;
+
+ 
+}
+
+.exam-info {
+  font-size: 14px; /* Font size for exam details */
+  margin: 5px 0;
+  
+}
+
+
+.green-dot,
+.yellow-dot,
+.red-dot {
+  width: 20px; /* Dot size */
+  height: 20px; /* Dot size */
+  border-radius: 50%; /* Make dots circular */
+
+}
+
+.green-dot {
+  background-color: green; /* Color for active status */
+}
+
+.yellow-dot {
+  background-color: yellow; /* Color for pending status */
+}
+
+.red-dot {
+  background-color: red; /* Color for expired status */
+}
+
+
+
+.green-button {
+  border-color: #4caf50; /* Green button */
+  color: #4caf50; /* Button text color */
+  padding: 10px 20px; /* Padding for button */
+  background-color: #33ada6; /* Button background color */
+}
+
+.yellow-button {
+  border-color: #ffc107; /* Yellow button */
+  color: #ffc107; /* Button text color */
+  padding: 10px 20px; /* Padding for button */
+  background-color: #33ada6; /* Button background color */
+}
+
+.red-button {
+  border-color:  #f44336; /* Red button */
+  color: #f44336; /* Button text color */
+  padding: 10px 20px; /* Padding for button */
+  background-color: #33ada6; /* Button background color */
+}
+

@@ -1,0 +1,66 @@
+
+nav {
+   position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #33ada6;
+    padding: 5px 10px; /* Increased horizontal padding for better spacing */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+   
+}
+
+.header__logo {
+    width: 80px;
+    height: 80px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.header__icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 5px; /* Space between the links */
+}
+
+/* Styling for the links */
+.header__icons a {
+    text-decoration: none; /* Remove default underline */
+    color: white; /* Example link color */
+    font-size: 26px; /* Font size */
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    padding: 8px 15px;  /* Padding around links */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+}
+
+.header__icons a:hover {
+    /* Change background on hover */
+    color: hsl(177, 50%, 34%); /* Text color on hover */
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align items to the start */
+        padding: 10px; /* Reduce padding */
+    }
+
+    .header__logo {
+        margin: 0; /* Remove margins for better alignment */
+        width: 60px; /* Reduce logo size on smaller screens */
+        height: 60px;
+    }
+
+    .header__icons {
+        justify-content: flex-end; /* Align icons to the right */
+        width: 100%; /* Make it take full width */
+    }
+
+    .header__icons a {
+        font-size: 20px; /* Decrease font size on smaller screens */
+    }
+}

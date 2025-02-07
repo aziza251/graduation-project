@@ -1,0 +1,84 @@
+body, html {
+    height: 100%;
+    overflow-y: auto;
+    
+}
+
+.generate-questions-container {
+    background-color: #f4f4f4; /* Light grey background as per design */
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin-left: 410px; /* Adjust margin according to sidebar width */
+    margin-top: 100px; /* Adjust to account for header height */
+    margin-bottom: 100px;
+   
+}
+
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+
+  .form-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  
+  .options-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px; /* Space between rows */
+  }
+  
+  .form-column {
+    flex: 1;
+    margin-right: 110px;
+   
+  }
+  
+  .form-column:last-child {
+    margin-right: 0;
+  }
+  
+  label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: flex-start !important; /* Force label alignment to the left */
+    display: block; /* Ensure it's displayed as a block */
+    width: 90%; /* Ensure it takes up the full width */
+  }
+  
+  input {
+   
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #33ada6;
+  }
+  
+  .buttons-row {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 15px; /* Space between rows */
+  }
+  
+  .button-column {
+    flex: 1;
+   
+   
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    background-color: #33ada6;
+    color: white;
+    font-size: 10px;
+    
+  }

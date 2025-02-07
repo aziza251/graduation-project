@@ -1,0 +1,123 @@
+/* Manage_Student.css */
+h2 {
+    margin-bottom: 20px;
+
+}
+body {
+    margin: 0; /* Remove default body margin */
+    overflow: hidden; /* Prevent scrolling on body */
+}
+
+.main-container {
+    display: flex; /* Use flexbox for layout */
+    margin-top: 60px; /* Spacing for the fixed header */
+   
+}
+
+.teacher-sidebar {
+    width: 200px; /* Fixed width for the sidebar */
+    background-color: #f0f0f0; /* Background color for sidebar */
+    padding: 15px; /* Padding for sidebar */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    height: calc(100vh - 60px); /* Full height minus header */
+    position: fixed; /* Fixes the sidebar to the left */
+    top: 60px; /* Adjust based on your header height */
+    left: 0; /* Align to the left */
+    overflow-y: auto; /* Allow scrolling in the sidebar if needed */
+    
+}
+
+.student-table-container {
+    margin-left: 220px; /* Provide margin for the sidebar */
+    padding: 10px; /* Padding around the table */
+    background-color: #fff; /* Background color for the table area */
+    height: calc(100vh - 60px); /* Full height minus header */
+    overflow-y: auto; /* Enable vertical scrolling for content */
+    position: relative; /* Position relative to allow content to scroll */
+    top: 0; /* Reset top positioning */
+    margin-bottom: 20px;
+}
+
+.student-table {
+    width: 100%; /* Table takes full width */
+    border-collapse: collapse; /* Remove gaps between table cells */
+    
+}
+
+.student-table th,
+  
+
+.student-table td {
+    padding: 13px; /* Padding for table cells */
+    text-align: center; /* Align text to the left */
+    border-bottom: 1px solid #ddd; /* Light border for rows */
+  
+   
+}
+
+.student-table th {
+    background-color: #f5f5f5; /* Light background for header */
+    
+}
+
+.fixed-header {
+    position: fixed; /* Keep header fixed */
+    top: 0; /* Fix at the top */
+    left: 0; /* Align to the left */
+    right: 0; /* Stretch to the right */
+    background-color: white; /* Background color to cover content behind */
+    z-index: 1000; /* Ensure it stays on top of other elements */
+    height: 60px; /* Fixed height of header */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+}
+/* Manage_Student.css */
+
+/* Add this CSS rule for button styling */
+.delete-button {
+    background-color: #36c9b1; /* Default background color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    padding: 10px 15px; /* Padding for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Add hover effect */
+.delete-button:hover {
+    background-color: #2a9b8a; /* Darker color on hover */
+}
+
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+  }
+  
+  .close {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  

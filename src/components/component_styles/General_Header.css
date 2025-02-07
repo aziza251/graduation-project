@@ -1,0 +1,71 @@
+
+nav {
+    position: fixed; /* Add this to fix the header */
+    top: 0; /* Position it at the top of the viewport */
+    left: 0;
+    right: 0;
+    height: 70px; /* Set a fixed height */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #33ada6;
+    padding: 5px 10px; /* Increased horizontal padding for better spacing */
+    
+    margin-bottom: 100px;
+    z-index: 1000; /* Ensure it stays above other content */
+}
+
+.header__logo {
+    width: 60px;
+    height: 60px;
+    margin-left: 20px;
+    margin-top: 7px;
+}
+
+.header__icons {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 5px; /* Space between the links */
+}
+
+/* Styling for the links */
+.header__icons a {
+    text-decoration: none; /* Remove default underline */
+    color: white; /* Example link color */
+    font-size: 26px; /* Font size */
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    padding: 8px 15px;  /* Padding around links */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+}
+
+.header__icons a:hover {
+    /* Change background on hover */
+    color: hsl(177, 50%, 34%); /* Text color on hover */
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align items to the start */
+        padding: 10px; /* Reduce padding */
+    }
+
+    .header__logo {
+        margin: 0; /* Remove margins for better alignment */
+        width: 4x0px; /* Reduce logo size on smaller screens */
+        height: 40px;
+    }
+
+    .header__icons {
+        justify-content: flex-end; /* Align icons to the right */
+        width: 100%; /* Make it take full width */
+    }
+
+    .header__icons a {
+        font-size: 20px; /* Decrease font size on smaller screens */
+    }
+}

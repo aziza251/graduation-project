@@ -1,0 +1,131 @@
+/* General Styles */
+body, html {
+  margin: 10px;
+  margin-top: 110px;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+  min-height: 100%;
+ 
+}
+
+h1, h2, h3 {
+  color: #33ada6;
+  text-align: center;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+  text-align: justify;
+}
+
+/* Make sure the entire page is scrollable */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Home Page */
+.home-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  background-color: #f1f1f1;
+  padding: 50px;
+}
+
+.home-content {
+  max-width: 45%;
+  margin-bottom: 30px;
+  text-align: left;
+ 
+}
+
+.home-banner {
+  max-width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.uni-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Content Page */
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  background-color: #f1f1f1;
+  padding: 80px;
+  margin: 40px 20px;
+}
+
+.left-content, .right-content {
+  flex: 1;
+  padding: 10px;
+  
+}
+
+.image-section {
+  flex: 1;
+  text-align: center;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+.center-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* About Page */
+.about-page {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px 20px;
+  padding: 40px;
+  background-color: #f1f1f1;
+  flex-wrap: wrap;
+}
+
+.about-content {
+  max-width: 45%;
+  text-align: left;
+}
+
+.about-banner {
+  max-width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.uni-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .home-container, .about-page {
+    flex-direction: column;
+  }
+
+  .home-content, .home-banner, .about-content, .about-banner {
+    max-width: 100%;
+  }
+
+  .uni-image {
+    max-width: 90%;
+  }
+}

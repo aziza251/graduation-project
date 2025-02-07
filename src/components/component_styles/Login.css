@@ -1,0 +1,72 @@
+/* Login.css */
+
+.login-container {
+  width: 100%;
+  max-width: 400px; /* Adjusted width for better visibility */
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column; /* Single column layout */
+}
+
+h2 {
+  color: black;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.input-container {
+  margin-bottom: 15px;
+  margin-left: 35px; /* Add space between label and input */
+  width: 82%; /* Ensure input container is full width */
+}
+
+label {
+  display: block; /* Ensure label takes up the full width */
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: black;
+}
+
+
+input, select {
+  padding: 12px; /* Uniform padding for all inputs and buttons */
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  width: 100%; /* Make all inputs and buttons full width */
+  box-sizing: border-box; /* Ensures padding is included in width */
+}
+
+
+
+
+button:hover {
+  background-color: #33ada6; /* Darker shade on hover */
+}
+
+.login-footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.login-footer a {
+  margin: 0 10px;
+  color: #33ada6; /* Change to your preferred color */
+  text-decoration: none;
+}
+
+.button-row {
+  display: flex;
+   /* Ensure the buttons are spaced properly */
+  gap: 50px; /* Add some space between the buttons */
+  margin-top: 20px;
+  margin-left: 40px;
+}
+
