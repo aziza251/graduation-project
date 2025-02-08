@@ -6,7 +6,7 @@ import Teacher_Sidebar from "../components/Teacher_Sidebar";
 
 function Save_Button_Clicked() {
   const handleCSV = (e) => {
-    console.log("SAved as CSV");
+    console.log("Saved as CSV");
   };
 
   const handlePDF = (e) => {

@@ -3,7 +3,8 @@ import General_Header from "../components/General_Header";
 import Teacher_Sidebar from "../components/Teacher_Sidebar";
 import axios from "axios";
 import "./page_styles/Manage_Student.css";
-
+import "font-awesome/css/font-awesome.min.css"; // Import Font Awesome CSS
+import { Link } from "react-router-dom";
 const Teacher_Exam_History = () => {
   const [examHistory, setExamHistory] = useState([]);
 
@@ -34,6 +35,7 @@ const Teacher_Exam_History = () => {
     const minutes = String(date.getMinutes()).padStart(2, "0"); // Get minutes with leading zero
     return `${hours}:${minutes}`; // Format as HH:mm
   };
+
   return (
     <>
       <General_Header />
@@ -52,7 +54,7 @@ const Teacher_Exam_History = () => {
               <th>Average</th>
               <th>Attendees</th>
               <th>CSV</th>
-              <th>Suspicious Actions</th>
+              <th>View Results</th>
             </tr>
           </thead>
           <tbody>
@@ -67,7 +69,16 @@ const Teacher_Exam_History = () => {
                 <td>{exam.average_mark}</td>
                 <td>{exam.participants}</td>
                 <td>{exam.csv_upload_path}</td>
-                <td>{exam.suspicious_action}</td>
+                <td>
+                  <i
+                    className="fa fa-folder"
+                    onClick={() =>
+                      (window.location.href = "/teacher-exam-results")
+                    }
+                    style={{ cursor: "pointer", marginRight: "10px" }}
+                    title="View"
+                  ></i>
+                </td>
               </tr>
             ))}
           </tbody>

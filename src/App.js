@@ -52,7 +52,10 @@ function App() {
             path="/generate-question-manually"
             element={<Generate_Q_Manually />}
           />
-
+          <Route
+            path="/generate-question-automatically"
+            element={<Generate_Q_Automatically />}
+          />
           <Route path="/student-home" element={<Student_Home />} />
           <Route
             path="/student-exam-history"

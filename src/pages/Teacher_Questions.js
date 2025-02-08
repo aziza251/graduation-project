@@ -4,10 +4,12 @@ import Teacher_Sidebar from "../components/Teacher_Sidebar";
 import axios from "axios";
 import "./page_styles/Manage_Student.css";
 import "font-awesome/css/font-awesome.min.css"; // Import Font Awesome CSS
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 const Teacher_Questions = () => {
   const [questions, setQuestions] = useState([]);
-  const [viewContent, setViewContent] = useState(null); // Store CSV content
+  const [viewContent, setViewContent] = useState([]); // Store CSV content as array
   const [showModal, setShowModal] = useState(false); // Modal visibility
 
   useEffect(() => {
@@ -16,7 +18,6 @@ const Teacher_Questions = () => {
         const response = await axios.get(
           "http://localhost:8000/view-questions"
         );
-        console.log("Fetched questions:", response.data); // Log the response
         setQuestions(response.data);
       } catch (error) {
         console.error("Error fetching the data", error);
@@ -25,16 +26,20 @@ const Teacher_Questions = () => {
     fetchQuestions();
   }, []);
 
-  // Function for handling actions
+  // Function to view CSV content
   const handleView = async (csvFileUrl) => {
-    console.log("Fetching file from:", csvFileUrl); // Log the URL to confirm it's correct
     try {
       const response = await axios.get(csvFileUrl, { responseType: "blob" });
-      const text = await response.data.text(); // Read the CSV content as text
+      const text = await response.data.text();
 
-      // Display the CSV content or use it as needed
-      setViewContent(text);
-      setShowModal(true); // Open modal or similar UI element
+      // Convert CSV text into a structured table format
+      const rows = text
+        .trim()
+        .split("\n")
+        .map((row) => row.split(","));
+
+      setViewContent(rows); // Store parsed data
+      setShowModal(true); // Show modal
     } catch (error) {
       console.error("Error fetching file content", error);
     }
@@ -42,18 +47,15 @@ const Teacher_Questions = () => {
 
   const handleDelete = async (csvId) => {
     try {
-      console.log("Deleting question with ID:", csvId); // Debugging: log the csvId
       const response = await axios.delete(
         `http://localhost:8000/delete-question/${csvId}`
       );
-
       if (response.status === 200) {
         setQuestions((prevQuestions) =>
-          prevQuestions.filter((question) => question.csv_id !== csvId)
+          prevQuestions.filter((q) => q.csv_id !== csvId)
         );
-        console.log("Deleted question with ID:", csvId);
       } else {
-        console.error("Failed to delete question. Response:", response);
+        console.error("Failed to delete question");
       }
     } catch (error) {
       console.error("Error deleting the question:", error);
@@ -62,34 +64,49 @@ const Teacher_Questions = () => {
 
   const handleDownload = async (file_name) => {
     try {
-      // Construct the full URL of the file
       const fileUrl = `http://localhost:8000/uploads/${file_name}`;
+      const response = await axios.get(fileUrl, { responseType: "blob" });
 
-      // Make the request to fetch the file as a Blob
-      const response = await axios.get(fileUrl, {
-        responseType: "blob",
-      });
-
-      // Create a Blob from the response data
       const blob = new Blob([response.data], { type: "text/csv" });
-
-      // Create a URL for the Blob
       const url = window.URL.createObjectURL(blob);
-
-      // Create a link element for downloading
       const link = document.createElement("a");
       link.href = url;
-      link.setAttribute("download", file_name); // Use the file name for the download
-
-      // Append the link to the body, click it, and then remove it
+      link.setAttribute("download", file_name);
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-
-      // Revoke the object URL to free memory
       window.URL.revokeObjectURL(url);
     } catch (error) {
       console.error("Error downloading the file", error);
+    }
+  };
+
+  const handleDownloadPDF = async (file_name) => {
+    try {
+      const fileUrl = `http://localhost:8000/uploads/${file_name}`;
+      const response = await axios.get(fileUrl, { responseType: "blob" });
+
+      const text = await response.data.text();
+      const rows = text
+        .trim()
+        .split("\n")
+        .map((row) => row.split(","));
+
+      if (rows.length === 0) {
+        console.error("No data found in the CSV file");
+        return;
+      }
+
+      const doc = new jsPDF();
+      doc.text("CSV File: " + file_name, 14, 10);
+      doc.autoTable({
+        head: [rows[0]],
+        body: rows.slice(1),
+      });
+
+      doc.save(file_name.replace(".csv", ".pdf"));
+    } catch (error) {
+      console.error("Error converting CSV to PDF", error);
     }
   };
 
@@ -108,38 +125,44 @@ const Teacher_Questions = () => {
             </tr>
           </thead>
           <tbody>
-            {questions.map(
-              (question) => (
-                console.log("Question data: ", question),
-                (
-                  <tr key={question.csv_id}>
-                    <td>{question.file_name}</td>
-                    <td>
-                      <i
-                        className="fa fa-folder"
-                        onClick={() => handleView(question.csv_file_url)}
-                        style={{ cursor: "pointer", marginRight: "10px" }}
-                        title="View"
-                      ></i>
-                    </td>
-                    <td>
-                      <i
-                        className="fa fa-trash"
-                        onClick={() => handleDelete(question.csv_id)}
-                        style={{ cursor: "pointer", marginRight: "10px" }}
-                        title="Delete"
-                      ></i>
-                      <i
-                        className="fa fa-download"
-                        onClick={() => handleDownload(question.file_name)}
-                        style={{ cursor: "pointer" }}
-                        title="Download"
-                      ></i>
-                    </td>
-                  </tr>
-                )
-              )
-            )}
+            {questions.map((question) => (
+              <tr key={question.csv_id}>
+                <td>{question.file_name}</td>
+                <td>
+                  <i
+                    className="fa fa-folder"
+                    onClick={() => handleView(question.csv_file_url)}
+                    style={{ cursor: "pointer", marginRight: "10px" }}
+                    title="View"
+                  ></i>
+                </td>
+                <td>
+                  <i
+                    className="fa fa-trash"
+                    onClick={() => handleDelete(question.csv_id)}
+                    style={{ cursor: "pointer", marginRight: "10px" }}
+                    title="Delete"
+                  ></i>
+                  <i
+                    className="fa fa-download"
+                    onClick={() => handleDownload(question.file_name)}
+                    style={{ cursor: "pointer" }}
+                    title="Download"
+                  ></i>
+
+                  <i
+                    className="fa fa-file-pdf-o"
+                    onClick={() => handleDownloadPDF(question.file_name)}
+                    style={{
+                      cursor: "pointer",
+                      color: "black",
+                      marginLeft: "10px",
+                    }}
+                    title="Download as PDF"
+                  ></i>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -147,12 +170,36 @@ const Teacher_Questions = () => {
       {/* Modal for displaying CSV content */}
       {showModal && (
         <div className="modal">
-          <div className="modal-content">
+          <div
+            className="modal-content"
+            style={{ width: "90%", height: "80vh", maxWidth: "1200px" }}
+          >
             <span className="close" onClick={() => setShowModal(false)}>
               &times;
             </span>
             <h3>CSV File Content</h3>
-            <pre>{viewContent}</pre>
+            {viewContent.length > 0 ? (
+              <table className="csv-table">
+                <thead style={{ gap: "10px" }}>
+                  <tr>
+                    {viewContent[0].map((header, index) => (
+                      <th key={index}>{header}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {viewContent.slice(1).map((row, rowIndex) => (
+                    <tr key={rowIndex}>
+                      {row.map((cell, cellIndex) => (
+                        <td key={cellIndex}>{cell}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <p>No data found in the file.</p>
+            )}
           </div>
         </div>
       )}

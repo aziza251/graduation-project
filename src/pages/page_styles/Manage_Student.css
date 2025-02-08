@@ -121,3 +121,19 @@ body {
     word-wrap: break-word;
   }
   
+  .csv-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .csv-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .csv-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  

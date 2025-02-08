@@ -22,7 +22,12 @@ const Teacher_Sidebar = () => {
         </li>
         <li>
           <Link to="/generate-question-manually">
-            <FaQuestionCircle className="icon" /> Generate Question
+            <FaQuestionCircle className="icon" /> Generate Question (M)
+          </Link>
+        </li>
+        <li>
+          <Link to="/generate-question-automatically">
+            <FaQuestionCircle className="icon" /> Generate Question (A)
           </Link>
         </li>
         <li>
@@ -30,11 +35,7 @@ const Teacher_Sidebar = () => {
             <FaHistory className="icon" /> Exam History
           </Link>
         </li>
-        <li>
-          <Link to="/teacher-exam-results">
-            <FaCheckSquare className="icon" /> Exam Results
-          </Link>
-        </li>
+
         <li>
           <Link to="/teacher-questions">
             <FaEye className="icon" /> View Questions
